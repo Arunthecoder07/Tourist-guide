@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>India Tourist Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🌏 India Tourist Guide</h1>
+        <p>Discover tourist attractions across India</p>
+    </header>
+
+    <div class="search-box">
+        <input type="text" id="cityInput" placeholder="Enter city name...">
+        <button onclick="searchCity()">Search</button>
+    </div>
+
+    <h2 id="resultsTitle" style="display:none;"></h2>
+    <div id="spotsList" class="cards"></div>
+
+    <div id="map" style="height:400px;width:100%;"></div>
+</div>
+
+<footer>
+    <p>Made with ❤️ by TouristGuideApp</p>
+    <p><small>Backend: /api/tourist/{city}</small></p>
+ </footer>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
+
+

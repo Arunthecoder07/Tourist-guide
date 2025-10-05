@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attraction Details - India Tourist Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🌏 Pan-India Tourist Guide</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="signin.html">Sign In</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <div class="detail-header">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> 
+            <span id="attractionName">Attraction Details</span>
+        </div>
+    </div>
+
+    <div class="detail-content">
+        <div class="detail-main">
+            
+
+            <div class="detail-info">
+                <h1 id="attractionTitle">Attraction Name</h1>
+                <div class="rating-section">
+                    <div class="rating">
+                        <span id="attractionRating">4.5</span>
+                        <div class="stars" id="attractionStars"></div>
+                        <span class="rating-count">(89 reviews)</span>
+                    </div>
+                    <div class="type-badge">
+                        <i class="fas fa-tag"></i>
+                        <span id="attractionType">Historical</span>
+                    </div>
+                </div>
+
+                <div class="location-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="attractionAddress">Attraction Address</span>
+                </div>
+
+                <div class="directions-section">
+                    <h3>Directions</h3>
+                    <p>
+                        <a id="attractionDirectionsLink" class="directions-link" href="#" target="_blank" rel="noopener">
+                            <i class="fas fa-route"></i> Open Google Maps Directions
+                        </a>
+                    </p>
+                </div>
+
+                <div class="description">
+                    <h3>About this attraction</h3>
+                    <p id="attractionDescription">Attraction description will be loaded here...</p>
+                </div>
+
+                
+
+                <div class="action-section">
+                    <button class="visit-btn" onclick="planVisit()">
+                        <i class="fas fa-route"></i> Plan Visit
+                    </button>
+                    <button class="share-btn" onclick="shareAttraction()">
+                        <i class="fas fa-share"></i> Share
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-sidebar"></div>
+    </div>
+
+    <div class="reviews-section">
+        <h2>Visitor Reviews</h2>
+        <div class="reviews-container" id="reviewsContainer"></div>
+        <form id="addReviewForm" class="auth-card" style="margin-top:15px;">
+            <h3 class="auth-title"><i class="fas fa-star"></i> Add your review</h3>
+            <div class="form-group">
+                <label for="reviewRating">Rating</label>
+                <select id="reviewRating" required>
+                    <option value="">Select</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="reviewText">Your review</label>
+                <textarea id="reviewText" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Review</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>Made with ❤️ by TouristGuideApp</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="js/attraction-details.js"></script>
+</body>
+</html>
+
+
+
+

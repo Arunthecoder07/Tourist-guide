@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up | India Tourist Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="auth-page">
+<div class="container">
+    <header>
+        <h1>🌏 Pan-India Tourist Guide</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="signin.html">Sign In</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <section class="auth-wrapper">
+        <div class="auth-card">
+            <h2 class="auth-title"><i class="fas fa-user-plus"></i> Create an Account</h2>
+            <form id="signupForm">
+                <input class="auth-input" type="text" id="name" placeholder="Full Name" required>
+                <input class="auth-input" type="email" id="email" placeholder="Email" required>
+                <input class="auth-input" type="password" id="password" placeholder="Password" required minlength="6">
+                <input class="auth-input" type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <button class="submit-btn" type="submit">Sign Up</button>
+                <div class="auth-meta">
+                    Already have an account? <a href="signin.html">Sign In</a>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>Made with ❤️ by TouristGuideApp</p>
+    </footer>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const pass = document.getElementById("password").value;
+    const confirmPass = document.getElementById("confirmPassword").value;
+
+    if(pass !== confirmPass){
+        alert("Passwords do not match!");
+        return;
+    }
+
+    // Save signup data in localStorage (for demo)
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userPassword", pass);
+    localStorage.setItem("userName", name);
+
+    alert("Account created successfully!");
+    window.location.href = "signin.html";
+});
+</script>
+</body>
+</html>
+

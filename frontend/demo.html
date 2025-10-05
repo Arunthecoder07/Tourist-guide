@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - India Tourist Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🌏 Pan-India Tourist Guide</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="signin.html">Sign In</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h2>🎉 Demo - Enhanced Tourist Guide</h2>
+        <p>Experience the new features: Location input, detailed pages with real photos, and comprehensive information!</p>
+    </div>
+
+    <div class="demo-section">
+        <h3>✨ New Features Implemented:</h3>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-search"></i>
+                <h4>Enhanced Search</h4>
+                <p>Enter your location and discover hotels, attractions, and monuments with detailed information and real photos.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-hotel"></i>
+                <h4>Hotel Details</h4>
+                <p>Comprehensive hotel pages with amenities, pricing, reviews, and high-quality images.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-camera"></i>
+                <h4>Attraction Details</h4>
+                <p>Detailed attraction information with visiting hours, entry fees, and historical context.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-monument"></i>
+                <h4>Monument Details</h4>
+                <p>Rich historical information about monuments with UNESCO heritage status and architectural details.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>🚀 Try the New Features:</h3>
+        <div class="demo-buttons">
+            <a href="index.html" class="demo-btn">
+                <i class="fas fa-home"></i> Go to Main Search
+            </a>
+            <a href="hotel-details.html?id=1&name=Taj Palace Hotel" class="demo-btn">
+                <i class="fas fa-hotel"></i> View Hotel Details
+            </a>
+            <a href="attraction-details.html?id=1&name=Red Fort" class="demo-btn">
+                <i class="fas fa-camera"></i> View Attraction Details
+            </a>
+            <a href="monument-details.html?id=1&name=Qutub Minar" class="demo-btn">
+                <i class="fas fa-monument"></i> View Monument Details
+            </a>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>📱 How It Works:</h3>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Enter Location</h4>
+                    <p>Open the main page and enter your desired location (e.g., Delhi, Mumbai, Goa)</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Browse Results</h4>
+                    <p>View hotels, attractions, and monuments with beautiful cards showing photos and basic info</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>View Details</h4>
+                    <p>Click "View Details" to open comprehensive pages with real photos, pricing, reviews, and more</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>🎯 Key Improvements:</h3>
+        <ul class="improvements-list">
+            <li><i class="fas fa-check"></i> <strong>Location Input Prompt:</strong> Clear call-to-action when opening the app</li>
+            <li><i class="fas fa-check"></i> <strong>Real Photos:</strong> High-quality images from Unsplash for all locations</li>
+            <li><i class="fas fa-check"></i> <strong>Detailed Information:</strong> Comprehensive details for hotels, attractions, and monuments</li>
+            <li><i class="fas fa-check"></i> <strong>Pricing & Reviews:</strong> Real pricing information and user reviews</li>
+            <li><i class="fas fa-check"></i> <strong>Interactive Maps:</strong> Location maps for each place</li>
+            <li><i class="fas fa-check"></i> <strong>Responsive Design:</strong> Works perfectly on desktop and mobile</li>
+            <li><i class="fas fa-check"></i> <strong>Modern UI:</strong> Beautiful, intuitive interface with smooth animations</li>
+        </ul>
+    </div>
+</div>
+
+<footer>
+    <p>Made with ❤️ by TouristGuideApp</p>
+</footer>
+
+<style>
+.demo-section {
+    background: #0b1316;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px 0;
+    border: 1px solid #0b3d2e;
+}
+
+.demo-section h3 {
+    color: #a7f3d0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.feature-card {
+    background: #052e2b;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #0b3d2e;
+    text-align: center;
+}
+
+.feature-card i {
+    font-size: 2.5em;
+    color: #10b981;
+    margin-bottom: 15px;
+}
+
+.feature-card h4 {
+    color: #a7f3d0;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #c8e7d7;
+    line-height: 1.5;
+}
+
+.demo-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.demo-btn {
+    background: #10b981;
+    color: #052e2b;
+    padding: 15px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.demo-btn:hover {
+    background: #34d399;
+    transform: translateY(-2px);
+}
+
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.step-number {
+    background: #10b981;
+    color: #052e2b;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    color: #a7f3d0;
+    margin-bottom: 5px;
+}
+
+.step-content p {
+    color: #c8e7d7;
+    line-height: 1.5;
+}
+
+.improvements-list {
+    list-style: none;
+    padding: 0;
+}
+
+.improvements-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: #c8e7d7;
+}
+
+.improvements-list i {
+    color: #10b981;
+    margin-top: 3px;
+}
+
+@media (max-width: 768px) {
+    .demo-buttons {
+        flex-direction: column;
+    }
+    
+    .step {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+</style>
+</body>
+</html>
+
+
+
+

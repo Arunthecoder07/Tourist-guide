@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Reviews | India Tourist Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🌏 Pan-India Tourist Guide</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="signin.html">Sign In</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <section class="section">
+        <h2><i class="fas fa-star"></i> My Reviews</h2>
+        <div id="myReviewsContainer" class="reviews-container"></div>
+    </section>
+</div>
+
+<footer>
+    <p>Made with ❤️ by TouristGuideApp</p>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const userName = localStorage.getItem('userName');
+    if (!userName) {
+        alert('Please sign in to view your reviews.');
+        window.location.href = 'signin.html';
+        return;
+    }
+    try {
+        const resp = await fetch(`http://localhost:8082/api/reviews/user/${encodeURIComponent(userName)}`);
+        const data = await resp.json();
+        const list = Array.isArray(data) ? data : (data.reviews || []);
+        const container = document.getElementById('myReviewsContainer');
+        container.innerHTML = '';
+        if (list.length === 0) {
+            container.innerHTML = '<p class="no-reviews">You have not posted any reviews yet.</p>';
+            return;
+        }
+        list.forEach(r => {
+            const div = document.createElement('div');
+            div.className = 'review-item';
+            div.innerHTML = `
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar"><i class="fas fa-user"></i></div>
+                        <div class="reviewer-details">
+                            <h5>${r.userName || userName}</h5>
+                            <span class="review-date">${new Date(r.createdAt).toLocaleDateString()}</span>
+                        </div>
+                    </div>
+                    <div class="review-rating">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+                </div>
+                <div class="review-content"><p>${r.text}</p></div>
+                <div class="address"><i class="fas fa-tag"></i> ${r.targetType} • ${r.targetId}</div>
+            `;
+            container.appendChild(div);
+        });
+    } catch (e) {
+        console.error(e);
+        alert('Failed to load your reviews');
+    }
+});
+</script>
+</body>
+</html>
+
+

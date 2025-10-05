@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Location Details</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🌏 Pan-India Tourist Guide</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="signin.html">Sign In</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <div class="location-header">
+        <h2>Test Location Details Page</h2>
+        <p>This page demonstrates the new location details functionality with hotels, attractions, monuments, and reviews.</p>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tab-navigation">
+        <button class="tab-btn active" onclick="showTab('hotels')">
+            <i class="fas fa-hotel"></i> Hotels
+        </button>
+        <button class="tab-btn" onclick="showTab('attractions')">
+            <i class="fas fa-camera"></i> Attractions
+        </button>
+        <button class="tab-btn" onclick="showTab('monuments')">
+            <i class="fas fa-monument"></i> Monuments
+        </button>
+        <button class="tab-btn" onclick="showTab('reviews')">
+            <i class="fas fa-star"></i> Reviews
+        </button>
+    </div>
+
+    <!-- Hotels Section -->
+    <section id="hotels" class="tab-content active">
+        <div class="section-header">
+            <h3><i class="fas fa-hotel"></i> Hotels & Accommodations</h3>
+        </div>
+        <div id="hotelsList" class="cards-grid">
+            <!-- Mock hotel data will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Attractions Section -->
+    <section id="attractions" class="tab-content">
+        <div class="section-header">
+            <h3><i class="fas fa-camera"></i> Tourist Attractions</h3>
+        </div>
+        <div id="attractionsList" class="cards-grid">
+            <!-- Mock attraction data will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Monuments Section -->
+    <section id="monuments" class="tab-content">
+        <div class="section-header">
+            <h3><i class="fas fa-monument"></i> Historical Monuments</h3>
+        </div>
+        <div id="monumentsList" class="cards-grid">
+            <!-- Mock monument data will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="tab-content">
+        <div class="section-header">
+            <h3><i class="fas fa-star"></i> User Reviews</h3>
+        </div>
+        <div id="reviewsList" class="reviews-container">
+            <!-- Mock review data will be loaded here -->
+        </div>
+    </section>
+</div>
+
+<script>
+// Tab functionality
+function showTab(tabName) {
+    // Hide all tab contents
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // Remove active class from all tab buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Show selected tab content
+    document.getElementById(tabName).classList.add('active');
+    
+    // Add active class to clicked button
+    event.target.classList.add('active');
+}
+
+// Load mock data
+document.addEventListener('DOMContentLoaded', function() {
+    loadMockData();
+});
+
+function loadMockData() {
+    // Load hotels
+    const hotels = [
+        {
+            id: '1',
+            name: 'Taj Palace Hotel',
+            price: '15000',
+            rating: 4.8,
+            address: 'Sardar Patel Marg, New Delhi',
+            description: 'Luxury hotel with world-class amenities and stunning city views.',
+            image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400',
+            amenities: ['WiFi', 'Pool', 'Spa', 'Restaurant', 'Gym']
+        },
+        {
+            id: '2',
+            name: 'Budget Inn',
+            price: '2500',
+            rating: 3.5,
+            address: 'Main Street, New Delhi',
+            description: 'Comfortable budget accommodation in the heart of the city.',
+            image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400',
+            amenities: ['WiFi', 'AC', 'Restaurant']
+        }
+    ];
+    
+    displayHotels(hotels);
+    
+    // Load attractions
+    const attractions = [
+        {
+            id: '1',
+            name: 'Red Fort',
+            type: 'Historical',
+            rating: 4.7,
+            address: 'Netaji Subhash Marg, New Delhi',
+            description: 'A magnificent red sandstone fort built by Mughal emperor Shah Jahan.',
+            image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400'
+        },
+        {
+            id: '2',
+            name: 'India Gate',
+            type: 'Monument',
+            rating: 4.5,
+            address: 'Rajpath, New Delhi',
+            description: 'A war memorial dedicated to the soldiers of the British Indian Army.',
+            image: 'https://images.unsplash.com/photo-1587474265384-2d1eef2878f5?w=400'
+        }
+    ];
+    
+    displayAttractions(attractions);
+    
+    // Load monuments
+    const monuments = [
+        {
+            id: '1',
+            name: 'Qutub Minar',
+            rating: 4.6,
+            address: 'Mehrauli, New Delhi',
+            description: 'A 73-meter tall minaret built in the 12th century, a UNESCO World Heritage Site.',
+            image: 'https://images.unsplash.com/photo-1587474265384-2d1eef2878f5?w=400',
+            builtYear: '1192',
+            architecture: 'Indo-Islamic'
+        }
+    ];
+    
+    displayMonuments(monuments);
+    
+    // Load reviews
+    const reviews = [
+        {
+            id: '1',
+            userName: 'John Doe',
+            rating: 5,
+            review: 'Amazing place with rich history and beautiful architecture. Highly recommended!',
+            createdAt: new Date().toISOString()
+        },
+        {
+            id: '2',
+            userName: 'Jane Smith',
+            rating: 4,
+            review: 'Great experience, but it was quite crowded during peak hours.',
+            createdAt: new Date(Date.now() - 86400000).toISOString()
+        }
+    ];
+    
+    displayReviews(reviews);
+}
+
+function displayHotels(hotels) {
+    const container = document.getElementById('hotelsList');
+    container.innerHTML = '';
+    
+    hotels.forEach(hotel => {
+        const card = createHotelCard(hotel);
+        container.appendChild(card);
+    });
+}
+
+function displayAttractions(attractions) {
+    const container = document.getElementById('attractionsList');
+    container.innerHTML = '';
+    
+    attractions.forEach(attraction => {
+        const card = createAttractionCard(attraction);
+        container.appendChild(card);
+    });
+}
+
+function displayMonuments(monuments) {
+    const container = document.getElementById('monumentsList');
+    container.innerHTML = '';
+    
+    monuments.forEach(monument => {
+        const card = createMonumentCard(monument);
+        container.appendChild(card);
+    });
+}
+
+function displayReviews(reviews) {
+    const container = document.getElementById('reviewsList');
+    container.innerHTML = '';
+    
+    if (reviews.length === 0) {
+        container.innerHTML = '<p class="no-reviews">No reviews yet. Be the first to review this location!</p>';
+        return;
+    }
+    
+    reviews.forEach(review => {
+        const reviewElement = createReviewElement(review);
+        container.appendChild(reviewElement);
+    });
+}
+
+    function createHotelCard(hotel) {
+    const card = document.createElement('div');
+    card.className = 'card hotel-card';
+    card.innerHTML = `
+        <div class="card-content">
+            <h4>${hotel.name}</h4>
+            <div class="rating">
+                ${generateStars(hotel.rating)}
+                <span class="rating-text">${hotel.rating}/5</span>
+            </div>
+            <p class="address"><i class="fas fa-map-marker-alt"></i> ${hotel.address}</p>
+            <p class="description">${hotel.description}</p>
+            <div class="facts-grid">
+                <div class="fact-item"><strong>Rents:</strong> ₹${hotel.price}/night</div>
+                <div class="fact-item"><strong>Directions:</strong> <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(hotel.address)}" target="_blank" rel="noopener">Open in Maps</a></div>
+            </div>
+            <div class="amenities">
+                ${hotel.amenities.map(amenity => `<span class="amenity">${amenity}</span>`).join('')}
+            </div>
+            <div class="card-actions">
+                <button class="btn-primary" onclick="viewHotelDetails('${hotel.id}')">View Details</button>
+                <button class="btn-secondary" onclick="addToFavorites('${hotel.id}', 'hotel')">
+                    <i class="fas fa-heart"></i> Save
+                </button>
+            </div>
+        </div>
+    `;
+    return card;
+}
+
+    function createAttractionCard(attraction) {
+    const card = document.createElement('div');
+    card.className = 'card attraction-card';
+    card.innerHTML = `
+        <div class="card-content">
+            <h4>${attraction.name}</h4>
+            <div class="rating">
+                ${generateStars(attraction.rating)}
+                <span class="rating-text">${attraction.rating}/5</span>
+            </div>
+            <p class="address"><i class="fas fa-map-marker-alt"></i> ${attraction.address}</p>
+            <p class="description">${attraction.description}</p>
+            <div class="facts-grid">
+                <div class="fact-item"><strong>Rents/Entry:</strong> Free / N/A</div>
+                <div class="fact-item"><strong>Directions:</strong> <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(attraction.address)}" target="_blank" rel="noopener">Open in Maps</a></div>
+            </div>
+            <div class="card-actions">
+                <button class="btn-primary" onclick="viewAttractionDetails('${attraction.id}')">View Details</button>
+                <button class="btn-secondary" onclick="addToFavorites('${attraction.id}', 'attraction')">
+                    <i class="fas fa-heart"></i> Save
+                </button>
+            </div>
+        </div>
+    `;
+    return card;
+}
+
+    function createMonumentCard(monument) {
+    const card = document.createElement('div');
+    card.className = 'card monument-card';
+    card.innerHTML = `
+        <div class="card-content">
+            <h4>${monument.name}</h4>
+            <div class="rating">
+                ${generateStars(monument.rating)}
+                <span class="rating-text">${monument.rating}/5</span>
+            </div>
+            <p class="address"><i class="fas fa-map-marker-alt"></i> ${monument.address}</p>
+            <p class="description">${monument.description}</p>
+            <div class="facts-grid">
+                <div class="fact-item"><strong>Rents/Entry:</strong> Free / N/A</div>
+                <div class="fact-item"><strong>Directions:</strong> <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(monument.address)}" target="_blank" rel="noopener">Open in Maps</a></div>
+            </div>
+            <div class="historical-info">
+                <p><strong>Built:</strong> ${monument.builtYear}</p>
+                <p><strong>Architecture:</strong> ${monument.architecture}</p>
+            </div>
+            <div class="card-actions">
+                <button class="btn-primary" onclick="viewMonumentDetails('${monument.id}')">View Details</button>
+                <button class="btn-secondary" onclick="addToFavorites('${monument.id}', 'monument')">
+                    <i class="fas fa-heart"></i> Save
+                </button>
+            </div>
+        </div>
+    `;
+    return card;
+}
+
+function createReviewElement(review) {
+    const reviewDiv = document.createElement('div');
+    reviewDiv.className = 'review-item';
+    reviewDiv.innerHTML = `
+        <div class="review-header">
+            <div class="reviewer-info">
+                <div class="reviewer-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="reviewer-details">
+                    <h5>${review.userName}</h5>
+                    <span class="review-date">${formatDate(review.createdAt)}</span>
+                </div>
+            </div>
+            <div class="review-rating">
+                ${generateStars(review.rating)}
+            </div>
+        </div>
+        <div class="review-content">
+            <p>${review.review}</p>
+        </div>
+    `;
+    return reviewDiv;
+}
+
+function generateStars(rating) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+            stars += '<i class="fas fa-star"></i>';
+        } else if (i - 0.5 <= rating) {
+            stars += '<i class="fas fa-star-half-alt"></i>';
+        } else {
+            stars += '<i class="far fa-star"></i>';
+        }
+    }
+    return stars;
+}
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric' 
+    });
+}
+
+function addToFavorites(id, type) {
+    alert(`Added ${type} to favorites!`);
+}
+
+function viewHotelDetails(id) {
+    alert(`Viewing hotel details for ID: ${id}`);
+}
+
+function viewAttractionDetails(id) {
+    alert(`Viewing attraction details for ID: ${id}`);
+}
+
+function viewMonumentDetails(id) {
+    alert(`Viewing monument details for ID: ${id}`);
+}
+</script>
+</body>
+</html>

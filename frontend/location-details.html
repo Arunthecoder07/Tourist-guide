@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Details - India Tourist Guide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🌏 Pan-India Tourist Guide</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="signin.html">Sign In</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <div class="location-header">
+        <h2 id="locationTitle">Loading...</h2>
+        <p id="locationDescription">Discover amazing places in this location</p>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tab-navigation">
+        <button class="tab-btn active" onclick="showTab('hotels')">
+            <i class="fas fa-hotel"></i> Hotels
+        </button>
+        <button class="tab-btn" onclick="showTab('attractions')">
+            <i class="fas fa-camera"></i> Attractions
+        </button>
+        <button class="tab-btn" onclick="showTab('monuments')">
+            <i class="fas fa-monument"></i> Monuments
+        </button>
+        <button class="tab-btn" onclick="showTab('reviews')">
+            <i class="fas fa-star"></i> Reviews
+        </button>
+    </div>
+
+    <!-- Hotels Section -->
+    <section id="hotels" class="tab-content active">
+        <div class="section-header">
+            <h3><i class="fas fa-hotel"></i> Hotels & Accommodations</h3>
+            <div class="filter-controls">
+                <select id="hotelPriceFilter">
+                    <option value="">All Prices</option>
+                    <option value="budget">Budget (₹0-2000)</option>
+                    <option value="mid">Mid-range (₹2000-5000)</option>
+                    <option value="luxury">Luxury (₹5000+)</option>
+                </select>
+                <select id="hotelRatingFilter">
+                    <option value="">All Ratings</option>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4+ Stars</option>
+                    <option value="3">3+ Stars</option>
+                </select>
+            </div>
+        </div>
+        <div id="hotelsList" class="cards-grid"></div>
+    </section>
+
+    <!-- Attractions Section -->
+    <section id="attractions" class="tab-content">
+        <div class="section-header">
+            <h3><i class="fas fa-camera"></i> Tourist Attractions</h3>
+            <div class="filter-controls">
+                <select id="attractionTypeFilter">
+                    <option value="">All Types</option>
+                    <option value="nature">Nature</option>
+                    <option value="historical">Historical</option>
+                    <option value="religious">Religious</option>
+                    <option value="entertainment">Entertainment</option>
+                </select>
+            </div>
+        </div>
+        <div id="attractionsList" class="cards-grid"></div>
+    </section>
+
+    <!-- Monuments Section -->
+    <section id="monuments" class="tab-content">
+        <div class="section-header">
+            <h3><i class="fas fa-monument"></i> Historical Monuments</h3>
+        </div>
+        <div id="monumentsList" class="cards-grid"></div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="tab-content">
+        <div class="section-header">
+            <h3><i class="fas fa-star"></i> User Reviews</h3>
+            <button class="add-review-btn" onclick="showAddReviewForm()">
+                <i class="fas fa-plus"></i> Add Review
+            </button>
+        </div>
+        <div id="reviewsList" class="reviews-container"></div>
+    </section>
+
+    
+</div>
+
+<!-- Add Review Modal -->
+<div id="reviewModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeAddReviewForm()">&times;</span>
+        <h3>Add Your Review</h3>
+        <form id="reviewForm">
+            <div class="form-group">
+                <label for="reviewRating">Rating:</label>
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2"><i class="fas fa-star"></i></label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1"><i class="fas fa-star"></i></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="reviewText">Review:</label>
+                <textarea id="reviewText" name="review" rows="4" placeholder="Share your experience..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Review</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>Made with ❤️ by TouristGuideApp</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="js/location-details.js"></script>
+</body>
+</html>
+
